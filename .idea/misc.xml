@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/pavel/AndroidStudioProjects/detekt-danger-sample-android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2275" />
         <entry key="..\:/Users/pavel/AndroidStudioProjects/detekt-danger-sample-android/app/src/main/res/layout/activity_main.xml" value="0.40217391304347827" />
         <entry key="..\:/Users/pavel/AndroidStudioProjects/detekt-danger-sample-android/app/src/main/res/layout/content_main.xml" value="0.40217391304347827" />
       </map>

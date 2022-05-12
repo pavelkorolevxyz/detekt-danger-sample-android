@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -14,6 +16,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "detekt-danger-sample-android"
+
+includeBuild("build-logic")
 
 include(":app")
 include(":library")
