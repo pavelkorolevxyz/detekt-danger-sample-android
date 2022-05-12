@@ -9,6 +9,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      pull-requests: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -16,7 +19,7 @@ jobs:
       - name: Set up environment
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: 11
 
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
@@ -25,7 +28,7 @@ jobs:
         run: ./gradlew detekt
 
       - name: Danger
-        uses: danger/kotlin@1.0.0
+        uses: docker://ghcr.io/danger/danger-kotlin:1.0.0
         with:
           args: --dangerfile config/danger/config.df.kts
         env:

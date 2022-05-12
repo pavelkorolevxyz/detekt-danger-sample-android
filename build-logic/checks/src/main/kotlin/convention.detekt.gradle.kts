@@ -32,7 +32,7 @@ detekt {
     baseline = baselineFile
 }
 
-val reportMerge by tasks.registering(ReportMergeTask::class) {
+val reportMerge: TaskProvider<ReportMergeTask> = rootProject.registerMaybe("reportMerge") {
     description = "Runs merge of all detekt reports into single one"
     output.set(mergedReportFile)
 }
@@ -47,11 +47,28 @@ tasks.withType(Detekt::class).configureEach {
     }
 }
 
-plugins.withType(DetektPlugin::class) {
-    tasks.withType(Detekt::class) {
+
+plugins.withType<DetektPlugin> {
+    tasks.withType<Detekt> {
         finalizedBy(reportMerge)
         reportMerge.configure {
             input.from(xmlReportFile)
         }
     }
+}
+
+/**
+ * Workaround to get [TaskProvider] by task name if it already exists in given [Project]
+ * or register it otherwise
+ *
+ * [Github - Introduce TaskContainer.maybeNamed](https://github.com/gradle/gradle/issues/8057)
+ */
+inline fun <reified T : Task> Project.registerMaybe(
+    taskName: String,
+    configuration: Action<in T> = Action {},
+): TaskProvider<T> {
+    if (taskName in tasks.names) {
+        return tasks.named(taskName, T::class, configuration)
+    }
+    return tasks.register(taskName, T::class, configuration)
 }

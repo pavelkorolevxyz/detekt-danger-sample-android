@@ -2,6 +2,7 @@
 
 import io.github.ackeecz.danger.detekt.DetektPlugin
 import systems.danger.kotlin.*
+import systems.danger.kotlin.models.github.*
 import java.io.File
 
 register.plugin(DetektPlugin)

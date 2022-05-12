@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DetektProjectConfiguration">
+    <enableDetekt>true</enableDetekt>
+    <configPaths>C:\Users\pavel\AndroidStudioProjects\detekt-danger-sample-android\config\detekt\config.yml</configPaths>
+  </component>
+</project>
