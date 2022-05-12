@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">detekt-danger-sample-android</string>
+    <string name="hello">Hello detekt and danger</string>
+</resources>
