@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up environment
         uses: actions/setup-java@v1
@@ -28,7 +28,7 @@ jobs:
         run: ./gradlew detekt
 
       - name: Danger
-        uses: docker://ghcr.io/danger/danger-kotlin:1.0.0
+        uses: docker://ghcr.io/danger/danger-kotlin:1.1.0
         with:
           args: --dangerfile config/danger/config.df.kts
         env:
