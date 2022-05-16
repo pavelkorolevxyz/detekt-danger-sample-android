@@ -5,7 +5,7 @@ import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import xyz.pavelkorolev.library.Greeting
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity: AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(
         savedInstanceState: Bundle?,
@@ -14,4 +14,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         super.onCreate(savedInstanceState, persistentState)
         Greeting().sayHello(this)
     }
+
+
 }
