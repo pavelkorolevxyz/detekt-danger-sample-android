@@ -37,7 +37,7 @@ val reportMerge: TaskProvider<ReportMergeTask> = rootProject.registerMaybe("repo
     output.set(mergedReportFile)
 }
 
-tasks.withType(Detekt::class).configureEach {
+tasks.withType<Detekt>().configureEach {
     reports {
         html.required.set(false)
         sarif.required.set(false)
