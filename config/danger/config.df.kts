@@ -1,8 +1,8 @@
-@file:DependsOn("xyz.pavelkorolev.danger.detekt:plugin:0.1.3")
+@file:DependsOn("xyz.pavelkorolev.danger.detekt:plugin:1.0.1")
 
-import xyz.pavelkorolev.danger.detekt.DetektPlugin
 import systems.danger.kotlin.*
 import systems.danger.kotlin.models.github.*
+import xyz.pavelkorolev.danger.detekt.DetektPlugin
 import java.io.File
 
 register.plugin(DetektPlugin)
@@ -19,13 +19,21 @@ fun warnDetekt() {
     val file = File("build/reports/detekt/report.xml")
     if (!file.exists()) {
         warn(
-            ":see_no_evil: No detekt report found",
+            "🙈 No detekt report found",
         )
         return
     }
     with(DetektPlugin) {
         val report = parse(file)
-        message("Detekt violations found: ${report.count}. 🤯🤯🤯")
+        val count = report.count
+        if (count == 0) {
+            message("👏👏👏 Good job! Detekt found no violations here!")
+            return
+        }
+        fail(
+            "🙁 Detekt violations found: **${report.count}**.\n" +
+                    "Please fix them to proceed. We have zero-warning policy"
+        )
         report(report)
     }
 }
@@ -37,4 +45,3 @@ fun GitHub.warnWorkInProgress() {
         )
     }
 }
-
