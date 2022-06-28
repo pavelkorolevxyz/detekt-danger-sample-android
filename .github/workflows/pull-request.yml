@@ -33,3 +33,4 @@ jobs:
           args: --dangerfile config/danger/config.df.kts
         env:
           GITHUB_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
+          DEBUG: '*'
