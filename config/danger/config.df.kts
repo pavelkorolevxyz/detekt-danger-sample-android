@@ -11,8 +11,10 @@ danger(args) {
     warnDetekt()
 
     onGitHub {
-        warnWorkInProgress()
+//        warnWorkInProgress()
     }
+    message("Test failure", File("").absolutePath, 1)
+    fail("Test another relative link", "app/src/main/java/xyz/pavelkorolev/detektdangersample/MainActivity.kt", 8)
 }
 
 fun warnDetekt() {
@@ -25,6 +27,7 @@ fun warnDetekt() {
     }
     with(DetektPlugin) {
         val report = parse(file)
+        fail(report.files.first().absolutePath)
         val count = report.count
         if (count == 0) {
             message("👏👏👏 Good job! Detekt found no violations here!")
