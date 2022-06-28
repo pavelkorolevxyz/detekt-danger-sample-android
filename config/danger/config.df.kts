@@ -1,4 +1,5 @@
-@file:DependsOn("xyz.pavelkorolev.danger.detekt:plugin:1.0.1")
+//@file:DependsOn("xyz.pavelkorolev.danger.detekt:plugin:1.0.1")
+@file:DependsOn("plugin-1.0.2-SNAPSHOT.jar")
 
 import systems.danger.kotlin.*
 import systems.danger.kotlin.models.github.*
@@ -8,13 +9,11 @@ import java.io.File
 register.plugin(DetektPlugin)
 
 danger(args) {
-    //warnDetekt()
+    warnDetekt()
 
     onGitHub {
-//        warnWorkInProgress()
+        warnWorkInProgress()
     }
-    message("Test failure", File("").absolutePath, 1)
-    fail("Test another relative link", "app/src/main/java/xyz/pavelkorolev/detektdangersample/MainActivity.kt", 8)
 }
 
 fun warnDetekt() {
@@ -27,7 +26,6 @@ fun warnDetekt() {
     }
     with(DetektPlugin) {
         val report = parse(file)
-        fail(report.files.first().name ?: "")
         val count = report.count
         if (count == 0) {
             message("👏👏👏 Good job! Detekt found no violations here!")
