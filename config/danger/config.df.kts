@@ -1,4 +1,4 @@
-@file:DependsOn("xyz.pavelkorolev.danger.detekt:plugin:1.0.1")
+@file:DependsOn("xyz.pavelkorolev.danger.detekt:plugin:1.1.0")
 
 import systems.danger.kotlin.*
 import systems.danger.kotlin.models.github.*
