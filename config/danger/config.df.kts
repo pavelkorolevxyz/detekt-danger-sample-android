@@ -8,7 +8,7 @@ import java.io.File
 register.plugin(DetektPlugin)
 
 danger(args) {
-    warnDetekt()
+    //warnDetekt()
 
     onGitHub {
 //        warnWorkInProgress()
@@ -27,7 +27,7 @@ fun warnDetekt() {
     }
     with(DetektPlugin) {
         val report = parse(file)
-        fail(report.files.first().absolutePath)
+        fail(report.files.first().name ?: "")
         val count = report.count
         if (count == 0) {
             message("👏👏👏 Good job! Detekt found no violations here!")
