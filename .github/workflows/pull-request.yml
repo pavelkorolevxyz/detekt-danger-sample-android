@@ -28,7 +28,7 @@ jobs:
         run: ./gradlew detekt
 
       - name: Danger
-        uses: docker://ghcr.io/danger/danger-kotlin:1.1.0
+        uses: docker://ghcr.io/danger/danger-kotlin:1.2.0
         with:
           args: --dangerfile config/danger/config.df.kts
         env:

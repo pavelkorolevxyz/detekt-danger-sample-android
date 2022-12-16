@@ -16,7 +16,7 @@ danger(args) {
 }
 
 fun warnDetekt() {
-    val file = File("build/reports/detekt/report.xml")
+    val file = File("build/reports/detekt/report.sarif")
     if (!file.exists()) {
         warn(
             "🙈 No detekt report found",
